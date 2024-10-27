@@ -1,0 +1,110 @@
+/* styles.css */
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #6d6363;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background-color: #514d57;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header nav a:hover {
+    color: #098b8b;
+    text-decoration: underline;
+}
+
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #b1adad;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #050505;
+}
+.content ul {
+    line-height: 2.0;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #098b8b;
+}
+
+.hobby-interest-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hobby-interest-list li {
+    background-color: #865959;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(45, 31, 71, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hobby-interest-list li i {
+    color: #098b8b;
+}
+
+button {
+    background-color: #098b8b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #514d57;
+    color: white;
+    font-size: 0.9em;
+    margin-top: auto;
+}

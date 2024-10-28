@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-/* Header */
 .header {
     background-color: rgb(13, 13, 73);
     color: white;
@@ -36,7 +35,6 @@ body {
     text-decoration: underline;
 }
 
-/* Content */
 .content {
     max-width: 800px;
     margin: 20px auto;
@@ -60,7 +58,6 @@ h2 {
     color: #098b8b;
 }
 
-/* Hobby and Interest List */
 .hobby-interest-list {
     list-style-type: none;
     padding: 0;
@@ -85,7 +82,6 @@ h2 {
     color: #098b8b;
 }
 
-/* Button */
 button {
     background-color: #098b8b;
     color: white;
@@ -102,7 +98,6 @@ button:hover {
     background-color: #555;
 }
 
-/* Footer */
 .footer {
     text-align: center;
     padding: 10px;
@@ -112,9 +107,7 @@ button:hover {
     margin-top: auto;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
-    /* Stack navigation links vertically */
     .header nav ul {
         display: flex;
         flex-direction: column;
@@ -126,13 +119,11 @@ button:hover {
         margin-bottom: 10px;
     }
 
-    /* Make content padding smaller for smaller screens */
     .content {
         padding: 10px;
         width: 100%;
     }
 
-    /* Full-width button on mobile */
     button {
         width: 100%;
         padding: 12px;
@@ -140,7 +131,6 @@ button:hover {
         box-sizing: border-box;
     }
 
-    /* Ensure text size is appropriate for mobile */
     h1, h2 {
         font-size: 1.5em;
     }

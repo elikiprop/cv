@@ -1,19 +1,30 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body and Layout Setup */
 html, body {
-    height: 100%; 
-    margin: 0; 
+    height: 100%;
+    width: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    font-family: "Times New Roman", Times, serif;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                 url('images/download (1).jpeg') no-repeat center center fixed;
     background-size: cover;
     color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
     padding: 0;
+    margin: 0;
 }
 
+/* Header Section */
 .header {
     background-color: rgba(13, 13, 73, 0.9);
     color: white;
@@ -23,6 +34,7 @@ body {
     border-bottom: 2px solid #098b8b;
 }
 
+/* Navigation Styling */
 .header nav ul {
     list-style-type: none;
     padding: 0;
@@ -37,6 +49,7 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
 .header nav a:hover {
@@ -44,6 +57,7 @@ body {
     text-decoration: underline;
 }
 
+/* Content Styling */
 .content {
     flex: 1; 
     max-width: 800px;
@@ -55,16 +69,27 @@ body {
     color: #050505;
 }
 
-h2 {
+/* Heading Styles */
+h1, h2 {
     text-align: center;
     color: #098b8b;
+    margin-bottom: 20px;
     animation: slideIn 1s ease-in-out; 
 }
 
-p {
-    animation: fadeIn 1.5s ease-in-out; 
+h3 {
+    color: #333;
+    margin-top: 20px;
 }
 
+/* Paragraph Styles */
+p {
+    margin-bottom: 15px;
+    animation: fadeIn 1.5s ease-in-out; 
+    line-height: 1.6;
+}
+
+/* Button Styling */
 button {
     background-color: #098b8b;
     color: white;
@@ -83,6 +108,18 @@ button:hover {
     transform: scale(1.05); 
 }
 
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(23, 53, 23, 0.9);
+    color: #e0e0e0;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
+}
+
+/* Animation for Smooth Effects */
 @keyframes slideIn {
     0% {
         transform: translateY(-100%); 
@@ -103,16 +140,9 @@ button:hover {
     }
 }
 
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(23, 53, 23, 0.9);
-    color: #e0e0e0;
-    font-size: 0.9em;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-}
-
+/* Media Query for Responsive Design */
 @media (max-width: 768px) {
+    /* Header and Navigation */
     .header nav ul {
         display: flex;
         flex-direction: column;
@@ -124,24 +154,58 @@ button:hover {
         margin-bottom: 10px;
     }
 
+    /* Content Section */
     .content {
-        padding: 10px;
-        width: 100%;
+        width: 90%;
+        padding: 15px;
     }
 
     button {
         width: 100%;
         padding: 12px;
-        font-size: 1em;
+        font-size: 1.1em;
         box-sizing: border-box;
     }
 
+    /* Heading Font Size */
     h1, h2 {
         font-size: 1.5em;
     }
 
+    /* Footer Styling */
     .footer {
         padding: 15px;
         font-size: 0.8em;
     }
+}
+
+/* Improved Button Accessibility */
+button:focus {
+    outline: none;
+    border: 2px solid #098b8b;
+}
+
+/* Smooth Font Rendering */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure Links are Accessible */
+a:focus {
+    outline: 3px solid #098b8b;
+}
+
+/* Custom Scrollbar (optional) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #098b8b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
 }

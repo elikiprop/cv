@@ -4,7 +4,305 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav li a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        nav li a[href="skills.html"] {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-category {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            animation: slideInLeft 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            border-left-color: #667eea;
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .skill-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .skill-progress {
+            width: 100%;
+            height: 8px;
+            background: #e0e7ff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 1.5s ease-in-out;
+            width: 0;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .skill-item:nth-child(1) { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 1rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .header, .print-btn {
+                display: none;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                background: white;
+            }
+            
+            .skill-item {
+                background: #f9f9f9;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -22,27 +320,163 @@
             </ul>
         </nav>
     </div>
-
+    
     <div class="content">
         <div id="skills" class="section">
             <h2>Technical & Soft Skills</h2>
-            <ul>
-                <li><strong>React & Next.js:</strong> Building dynamic frontends and server-side rendered apps.</li>
-                <li><strong>Django & Python:</strong> Creating scalable web apps with secure backend systems.</li>
-                <li><strong>HTML, CSS, JavaScript:</strong> Developing responsive and accessible websites.</li>
-                <li><strong>Git & GitHub:</strong> Version control and collaboration using Git workflows.</li>
-                <li><strong>Cybersecurity Basics:</strong> Awareness of secure coding and system protection practices.</li>
-                <li><strong>Firebase & Vercel:</strong> Deploying full-stack apps and managing backendless databases.</li>
-                <li><strong>UI/UX Design Principles:</strong> Designing intuitive interfaces and user flows.</li>
-                <li><strong>Communication:</strong> Clear articulation of technical concepts and team coordination.</li>
-                <li><strong>Problem Solving:</strong> Analytical thinking and debugging across frontend and backend.</li>
-            </ul>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-code category-icon"></i>
+                        Technical Skills
+                    </h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">React & Next.js</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Building dynamic frontends and server-side rendered apps with modern React ecosystem.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Django & Python</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Creating scalable web applications with secure backend systems and RESTful APIs.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="80"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML, CSS, JavaScript</span>
+                            <span class="skill-level">Expert</span>
+                        </div>
+                        <p class="skill-description">Developing responsive and accessible websites with modern web standards.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Git & GitHub</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Version control and collaboration using Git workflows and GitHub best practices.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Cybersecurity Basics</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <p class="skill-description">Awareness of secure coding practices and system protection methodologies.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Firebase & Vercel</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Deploying full-stack applications and managing backend-as-a-service databases.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-lightbulb category-icon"></i>
+                        Design & Soft Skills
+                    </h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">UI/UX Design Principles</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <p class="skill-description">Designing intuitive interfaces and user flows with focus on user experience.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="75"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Communication</span>
+                            <span class="skill-level">Expert</span>
+                        </div>
+                        <p class="skill-description">Clear articulation of technical concepts and effective team coordination.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Problem Solving</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Analytical thinking and systematic debugging across frontend and backend systems.</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button onclick="window.print()">Print this page</button>
+        
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-print"></i> Print this page
+        </button>
     </div>
-
+    
     <div class="footer">
         <p>&copy; 2025 Eli Kiprop | Software Developer</p>
     </div>
+
+    <script>
+        // Animate progress bars when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const progressBars = document.querySelectorAll('.skill-progress-bar');
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                });
+            }, 500);
+        });
+
+        // Add intersection observer for better animation timing
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.skill-progress-bar');
+                    if (progressBar && progressBar.style.width === '0px') {
+                        const width = progressBar.getAttribute('data-width');
+                        progressBar.style.width = width + '%';
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
 </body>
 </html>

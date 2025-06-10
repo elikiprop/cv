@@ -4,8 +4,272 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interests</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav li a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        nav li a[href="interests.html"] {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interest-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .interest-card:hover::before {
+            left: 100%;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+
+        .interest-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .interest-description {
+            color: #666;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .interest-card {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .interest-card:nth-child(1) { animation-delay: 0.1s; }
+        .interest-card:nth-child(2) { animation-delay: 0.2s; }
+        .interest-card:nth-child(3) { animation-delay: 0.3s; }
+        .interest-card:nth-child(4) { animation-delay: 0.4s; }
+        .interest-card:nth-child(5) { animation-delay: 0.5s; }
+        .interest-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 1rem;
+            }
+            
+            .interests-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .header, .print-btn {
+                display: none;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                background: white;
+            }
+            
+            .interest-card {
+                background: #f9f9f9;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -23,22 +287,54 @@
             </ul>
         </nav>
     </div>
-
+    
     <div class="content">
         <div class="section">
-            <h2>My Interests</h2>
-            <ul class="hobby-interest-list">
-                <li><i class="fas fa-globe"></i> Web Development</li>
-                <li><i class="fas fa-user-shield"></i> Cybersecurity</li>
-                <li><i class="fas fa-brain"></i> Tech innovation & AI</li>
-                <li><i class="fas fa-chalkboard-teacher"></i> Mentorship & tech community events</li>
-                <li><i class="fas fa-users"></i> Leadership and youth empowerment</li>
-                <li><i class="fas fa-praying-hands"></i> Faith-based service</li>
-            </ul>
+            <h2>My Professional Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <i class="fas fa-globe interest-icon"></i>
+                    <h3 class="interest-title">Web Development</h3>
+                    <p class="interest-description">Passionate about creating responsive, user-friendly web applications using modern frameworks and technologies. Always exploring new tools and best practices in frontend and backend development.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <i class="fas fa-shield-alt interest-icon"></i>
+                    <h3 class="interest-title">Cybersecurity</h3>
+                    <p class="interest-description">Dedicated to understanding and implementing robust security measures to protect digital assets. Keen interest in ethical hacking, threat analysis, and developing secure coding practices.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <i class="fas fa-brain interest-icon"></i>
+                    <h3 class="interest-title">Tech Innovation & AI</h3>
+                    <p class="interest-description">Fascinated by emerging technologies and artificial intelligence. Actively learning about machine learning, automation, and how AI can solve real-world problems and improve user experiences.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <i class="fas fa-chalkboard-teacher interest-icon"></i>
+                    <h3 class="interest-title">Mentorship & Tech Community</h3>
+                    <p class="interest-description">Committed to sharing knowledge and helping others grow in technology. Actively participate in tech meetups, workshops, and mentoring programs to build stronger tech communities.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <i class="fas fa-users interest-icon"></i>
+                    <h3 class="interest-title">Leadership & Youth Empowerment</h3>
+                    <p class="interest-description">Passionate about developing leadership skills and empowering young people to pursue careers in technology. Believe in creating opportunities and removing barriers for the next generation.</p>
+                </div>
+                
+                <div class="interest-card">
+                    <i class="fas fa-hands-helping interest-icon"></i>
+                    <h3 class="interest-title">Faith-Based Service</h3>
+                    <p class="interest-description">Dedicated to serving others through faith-based initiatives and community service. Combining technical skills with spiritual values to make a positive impact in society.</p>
+                </div>
+            </div>
         </div>
-        <button onclick="window.print()">Print this page</button>
+        
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-print"></i> Print this page
+        </button>
     </div>
-
+    
     <div class="footer">
         <p>&copy; 2025 Eli Kiprop | Software Developer</p>
     </div>

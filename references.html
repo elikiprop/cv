@@ -3,52 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>References</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Professional references for my portfolio">
+    <title>Referees - My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header and Navigation - keeping your structure */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav a:hover, nav a:focus {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro-text {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Modern Reference Cards */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reference-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reference-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .reference-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .reference-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-title {
+            font-size: 1rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .reference-organization {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            fill: #667eea;
+        }
+
+        .contact-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #667eea;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .references-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .reference-card {
+                padding: 1.5rem;
+            }
+            
+            nav ul {
+                padding: 0.75rem 0;
+            }
+            
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus indicators */
+        .reference-card:focus-within {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <nav>
+    <header class="header" role="banner">
+        <nav role="navigation" aria-label="Main navigation">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="personal.html">Personal</a></li>
                 <li><a href="skills.html">Skills</a></li>
-                <li><a href="references.html">References</a></li> <!-- Link to the References page -->
+                <li><a href="references.html" aria-current="page">References</a></li>
             </ul>
         </nav>
-    </div>
+    </header>
 
-    <div class="content">
-        <h1>References</h1>
-        <p>Please find below my professional references:</p>
+    <main class="content" role="main">
+        <h1>Professional References</h1>
+        <p class="intro-text">Please find below my professional references who can speak to my skills and character.</p>
+        
+        <section class="references-grid" aria-label="Reference contacts">
+            <article class="reference-card">
+                <h2 class="reference-name">Dr. Oliko Gabriel</h2>
+                <div class="reference-title">Lecturer, School of Computing & Informatics</div>
+                <div class="reference-organization">Maseno University</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:goliko@maseno.ac.ke" class="contact-link">goliko@maseno.ac.ke</a>
+                    </div>
+                </div>
+            </article>
 
-        <ul>
-            <li>
-                <strong>Oliko Gabriel</strong><br>
-                Lecturer, School of Computing<br>
-                Industrial Attachment Supervisor<br>
-                Phone: <a href="tel:+254710401055">0710401055</a>
-            </li>
+            <article class="reference-card">
+                <h2 class="reference-name">Mr. Michael Wambwere</h2>
+                <div class="reference-title">Lecturer & Project Supervisor</div>
+                <div class="reference-organization">Maseno University</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:mwambwere@maseno.ac.ke" class="contact-link">mwambwere@maseno.ac.ke</a>
+                    </div>
+                </div>
+            </article>
 
-            <li>
-                <strong>Michael Wambwere</strong><br>
-                Lecturer, School of Computing<br>
-                Project Supervisor<br>
-                Phone: <a href="tel:+254722167347">0722167347</a>
-            </li>
+            <article class="reference-card">
+                <h2 class="reference-name">Chris Achinga</h2>
+                <div class="reference-title">Software Engineer & Mentor</div>
+                <div class="reference-organization">Swahilipot Hub Foundation</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:ca@swahilipothub.co.ke" class="contact-link">ca@swahilipothub.co.ke</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
 
-            <li>
-                <strong>Chris Achinga (C A)</strong><br>
-                Software Engineer (Lead), Industrial Attachment Coordinator<br>
-                Swahilipot Hub Foundation<br>
-                Email: <a href="mailto:ca@swahilipothub.co.ke">ca@swahilipothub.co.ke</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="footer">
-        <p>&copy; 2025 My Portfolio</p>
-    </div>
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
 </body>
 </html>

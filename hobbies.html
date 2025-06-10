@@ -3,13 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hobbies</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Hobbies - Eli Kiprop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 5px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Navigation Styles */
+        nav {
+            background: #34495e;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        nav ul li a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-bottom-color: #667eea;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hobby-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hobby-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .hobby-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .hobby-card i {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                border-bottom: none;
+                border-right: 3px solid transparent;
+                text-align: center;
+            }
+            
+            nav ul li a.active {
+                border-right-color: #667eea;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            nav, .print-btn {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Hobbies</h1>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1>Eli Kiprop</h1>
+                <p class="subtitle">Software Developer & Tech Enthusiast</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>elikiprop42@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kenya</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-code"></i>
+                        <span>Full Stack Developer</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -17,30 +337,76 @@
                 <li><a href="education.html">Education</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="hobbies.html" class="active">Hobbies</a></li>
                 <li><a href="interests.html">Interests</a></li>
                 <li><a href="references.html">Referees</a></li>
             </ul>
         </nav>
+
+        <main class="content">
+            <section class="section">
+                <h2><i class="fas fa-heart"></i> My Hobbies</h2>
+                <div class="hobby-grid">
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-code"></i> Coding Side Projects</h3>
+                        <p>I love exploring new programming concepts and building personal projects that challenge my skills. From web applications to mobile apps, coding is both my profession and passion.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-laptop"></i> Exploring New Tech Tools & Frameworks</h3>
+                        <p>Staying current with the latest technologies, frameworks, and development tools. I enjoy experimenting with new libraries and understanding how they can improve development workflows.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-hiking"></i> Nature Walks & Hiking</h3>
+                        <p>Finding peace and inspiration in nature through hiking and long walks. It's a great way to disconnect from screens, clear my mind, and maintain physical fitness while enjoying Kenya's beautiful landscapes.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-book-reader"></i> Reading Tech Blogs & Inspirational Books</h3>
+                        <p>Continuous learning through reading industry blogs, technical articles, and motivational books. This helps me stay informed about trends and gain different perspectives on technology and life.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-music"></i> Listening to Worship Music</h3>
+                        <p>Finding spiritual connection and peace through worship music. It provides inspiration and helps maintain a positive mindset while working on challenging projects.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h3><i class="fas fa-hands-helping"></i> Volunteering in Community Activities</h3>
+                        <p>Giving back to the community through various volunteer activities. Whether it's teaching coding to young people or participating in local community development projects, I believe in making a positive impact.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://web.facebook.com/eli.ndiema.1" class="social-link" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/EliKiprop9" class="social-link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/eli-kiprop-b12a51240/" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/merel_ndiema/" class="social-link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/" class="social-link" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:elikiprop42@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Eli Kiprop | Software Developer & Tech Enthusiast</p>
+            <p>Crafted with passion for technology and innovation</p>
+        </footer>
     </div>
 
-    <div class="content">
-        <div class="section">
-            <h2>My Hobbies</h2>
-            <ul class="hobby-interest-list">
-                <li><i class="fas fa-code"></i> Coding side projects</li>
-                <li><i class="fas fa-laptop"></i> Exploring new tech tools & frameworks</li>
-                <li><i class="fas fa-hiking"></i> Nature walks & hiking</li>
-                <li><i class="fas fa-book-reader"></i> Reading tech blogs and inspirational books</li>
-                <li><i class="fas fa-music"></i> Listening to worship music</li>
-                <li><i class="fas fa-hands-helping"></i> Volunteering in community activities</li>
-            </ul>
-        </div>
-        <button onclick="window.print()">Print this page</button>
-    </div>
+    <button class="print-btn" onclick="window.print()" title="Print CV">
+        <i class="fas fa-print"></i>
+    </button>
 
-    <div class="footer">
-        <p>&copy; 2025 Eli Kiprop | Software Developer</p>
-    </div>
+    <script>
+        // Add active class to current page link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

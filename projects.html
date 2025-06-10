@@ -206,6 +206,7 @@
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-link {
@@ -217,6 +218,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .project-link.primary {
@@ -272,6 +274,12 @@
             color: white;
             font-size: 1.2rem;
             border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
         }
 
         /* Action Buttons */
@@ -383,6 +391,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .project-links {
+                flex-direction: column;
+            }
         }
 
         /* Scroll animations */
@@ -450,11 +462,11 @@
                         <span class="tech-tag">Vercel</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">
+                        <a href="https://housing-ndiema.vercel.app" target="_blank" class="project-link primary">
                             <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
-                        <a href="#" class="project-link secondary">
-                            <i class="fab fa-github"></i> Source Code
+                        <a href="https://github.com/elikiprop" target="_blank" class="project-link secondary">
+                            <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
                 </div>
@@ -480,11 +492,8 @@
                         <span class="tech-tag">REST API</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">
-                            <i class="fas fa-eye"></i> View Details
-                        </a>
-                        <a href="#" class="project-link secondary">
-                            <i class="fas fa-file-pdf"></i> Documentation
+                        <a href="https://github.com/elikiprop/AssetManagement" target="_blank" class="project-link primary">
+                            <i class="fab fa-github"></i> View on GitHub
                         </a>
                     </div>
                 </div>
@@ -510,10 +519,10 @@
                         <span class="tech-tag">SQLite</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">
+                        <a href="https://eli.pythonanywhere.com/" target="_blank" class="project-link primary">
                             <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
-                        <a href="#" class="project-link secondary">
+                        <a href="https://github.com/elikiprop/MediConnect-System" target="_blank" class="project-link secondary">
                             <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
@@ -533,18 +542,15 @@
                         Modern, responsive portfolio website showcasing professional work and achievements. Features dynamic routing, interactive contact forms, project galleries, and optimized performance. Built with cutting-edge technologies for superior user experience and SEO optimization.
                     </p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Tailwind CSS</span>
-                        <span class="tech-tag">Vercel</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive Design</span>
                         <span class="tech-tag">GitHub</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">
-                            <i class="fas fa-external-link-alt"></i> Visit Site
-                        </a>
-                        <a href="#" class="project-link secondary">
-                            <i class="fab fa-github"></i> Source Code
+                        <a href="https://github.com/elikiprop/portfolio" target="_blank" class="project-link primary">
+                            <i class="fab fa-github"></i> View on GitHub
                         </a>
                     </div>
                 </div>
@@ -554,7 +560,7 @@
                 <h2><i class="fas fa-play-circle"></i> Project Showcase</h2>
                 <p>Watch a comprehensive demonstration of my key projects and development process</p>
                 <div class="video-container">
-                    <div class="video-placeholder">
+                    <div class="video-placeholder" onclick="showVideoModal()">
                         <div>
                             <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
                             <p>Project Demo Video</p>
@@ -565,7 +571,7 @@
             </section>
 
             <div class="action-buttons">
-                <button onclick="window.print()" class="action-btn secondary">
+                <button onclick="printPortfolio()" class="action-btn secondary">
                     <i class="fas fa-print"></i> Print Portfolio
                 </button>
                 <a href="mailto:elikiprop42@gmail.com" class="action-btn primary">
@@ -579,7 +585,7 @@
         <div class="container">
             <p>&copy; 2025 Eli Kiprop | Full-Stack Developer & IT Professional</p>
             <div class="social-links">
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/elikiprop" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="mailto:elikiprop42@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -607,52 +613,125 @@
         });
 
         // Enhanced print functionality
-        function printPage() {
-            const printWindow = window.open('', '_blank');
+        function printPortfolio() {
             const printContent = `
                 <html>
                 <head>
                     <title>Eli Kiprop - Projects Portfolio</title>
                     <style>
-                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+                        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 20px; }
                         .project { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
-                        .project h3 { color: #333; margin-bottom: 10px; }
-                        .tech-stack { margin: 10px 0; }
-                        .tech-tag { background: #f0f0f0; padding: 2px 8px; margin-right: 5px; border-radius: 3px; }
+                        .project h3 { color: #333; margin-bottom: 10px; font-size: 1.4em; }
+                        .project-subtitle { color: #666; font-style: italic; margin-bottom: 10px; }
+                        .tech-stack { margin: 15px 0; }
+                        .tech-tag { background: #f0f0f0; padding: 3px 8px; margin-right: 8px; border-radius: 4px; font-size: 0.9em; }
+                        .project-links { margin-top: 10px; }
+                        .project-links a { margin-right: 15px; color: #667eea; text-decoration: none; }
+                        .contact-info { margin-top: 30px; text-align: center; font-weight: bold; }
                     </style>
                 </head>
                 <body>
-                    <h1>Eli Kiprop - Projects Portfolio</h1>
+                    <div class="header">
+                        <h1>Eli Kiprop - Projects Portfolio</h1>
+                        <p>Full-Stack Developer & IT Professional</p>
+                    </div>
+                    
                     <div class="project">
                         <h3>House Rental Website</h3>
-                        <p>A comprehensive property rental platform connecting landlords with tenants across Kenya.</p>
-                        <div class="tech-stack">Tech: React, Firebase, JavaScript, CSS3, Vercel</div>
+                        <div class="project-subtitle">Full-Stack Web Application</div>
+                        <p>A comprehensive property rental platform connecting landlords with tenants across Kenya. Features real-time property listings, advanced search filters, secure user authentication, image upload capabilities, and mobile-responsive design.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> 
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <strong>Links:</strong> 
+                            <a href="https://housing-ndiema.vercel.app">Live Demo</a>
+                            <a href="https://github.com/elikiprop">GitHub</a>
+                        </div>
                     </div>
+                    
                     <div class="project">
-                        <h3>Asset Management System (Swahilipot Hub)</h3>
-                        <p>Professional asset tracking system developed during internship at SwahiliPot Hub.</p>
-                        <div class="tech-stack">Tech: Django, Python, Bootstrap, PostgreSQL, REST API</div>
+                        <h3>Asset Management System</h3>
+                        <div class="project-subtitle">Enterprise Solution - Swahilipot Hub</div>
+                        <p>Professional asset tracking system developed during internship at SwahiliPot Hub. Streamlines organizational asset management with features for tracking maintenance schedules, location transfers, and user assignments.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> 
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <strong>Links:</strong> 
+                            <a href="https://github.com/elikiprop/AssetManagement">GitHub Repository</a>
+                        </div>
                     </div>
+                    
                     <div class="project">
-                        <h3>MediConnect - Healthcare Management System</h3>
-                        <p>Comprehensive medical appointment and patient management system.</p>
-                        <div class="tech-stack">Tech: Django, JavaScript, HTML5, CSS3, SQLite</div>
+                        <h3>MediConnect</h3>
+                        <div class="project-subtitle">Healthcare Management System</div>
+                        <p>Comprehensive medical appointment and patient management system. Enables patients to book appointments, doctors to manage consultations, and administrators to oversee operations.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> 
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="project-links">
+                            <strong>Links:</strong> 
+                            <a href="https://eli.pythonanywhere.com/">Live Demo</a>
+                            <a href="https://github.com/elikiprop/MediConnect-System">GitHub Repository</a>
+                        </div>
                     </div>
+                    
                     <div class="project">
                         <h3>Personal Portfolio Website</h3>
-                        <p>Modern, responsive portfolio website showcasing professional work and achievements.</p>
-                        <div class="tech-stack">Tech: Next.js, React, Tailwind CSS, Vercel, GitHub</div>
+                        <div class="project-subtitle">Professional Portfolio</div>
+                        <p>Modern, responsive portfolio website showcasing professional work and achievements. Features dynamic routing, interactive contact forms, project galleries, and optimized performance.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> 
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">GitHub</span>
+                        </div>
+                        <div class="project-links">
+                            <strong>Links:</strong> 
+                            <a href="https://github.com/elikiprop/portfolio">GitHub Repository</a>
+                        </div>
                     </div>
-                    <p style="margin-top: 30px;"><strong>Contact:</strong> elikiprop42@gmail.com | +254 717 677 588</p>
+                    
+                    <div class="contact-info">
+                        <p><strong>Contact Information</strong></p>
+                        <p>Email: elikiprop42@gmail.com | Phone: +254 717 677 588</p>
+                        <p>GitHub: https://github.com/elikiprop</p>
+                    </div>
                 </body>
                 </html>
             `;
+            
+            const printWindow = window.open('', '_blank');
             printWindow.document.write(printContent);
             printWindow.document.close();
             printWindow.print();
         }
 
-        // Add click handlers for project cards
+        // Video showcase modal
+        function showVideoModal() {
+            alert('Project demo video showcase would be displayed here. You can replace this with an actual video embed or modal with your project walkthrough video.');
+        }
+
+        // Add enhanced interactions for project cards
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -663,9 +742,15 @@
             });
         });
 
-        // Video placeholder click handler
-        document.querySelector('.video-placeholder').addEventListener('click', function() {
-            alert('Project demo video would be displayed here. Replace this placeholder with your actual video.');
+        // Add click-to-copy functionality for project links
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add a subtle animation when clicked
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
         });
     </script>
 </body>

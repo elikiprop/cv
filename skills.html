@@ -121,13 +121,19 @@
             color: white;
             text-decoration: none;
             padding: 18px 25px;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: all 0.3s ease;
             font-weight: 500;
         }
 
         nav a:hover {
             background: #667eea;
+        }
+
+        nav a i {
+            font-size: 1.1em;
         }
 
         .content {
@@ -306,14 +312,38 @@
 
         <nav>
             <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#info"><i class="fas fa-info-circle"></i> Personal Information</a></li>
-                <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
-                <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li><a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a></li>
-                <li><a href="#interests"><i class="fas fa-star"></i> Interests</a></li>
-                <li><a href="#referees"><i class="fas fa-users"></i> Referees</a></li>
+                <li><a href="#home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a></li>
+                <li><a href="#info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Personal Information</span>
+                </a></li>
+                <li><a href="#education">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </a></li>
+                <li><a href="#skills">
+                    <i class="fas fa-tools"></i>
+                    <span>Skills</span>
+                </a></li>
+                <li><a href="#projects">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a></li>
+                <li><a href="#hobbies">
+                    <i class="fas fa-heart"></i>
+                    <span>Hobbies</span>
+                </a></li>
+                <li><a href="#interests">
+                    <i class="fas fa-star"></i>
+                    <span>Interests</span>
+                </a></li>
+                <li><a href="#referees">
+                    <i class="fas fa-users"></i>
+                    <span>Referees</span>
+                </a></li>
             </ul>
         </nav>
 

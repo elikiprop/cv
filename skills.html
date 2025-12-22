@@ -162,45 +162,57 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 30px;
         }
 
-        .skill-category {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .skill-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .skill-item {
-            margin-bottom: 25px;
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .skill-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .skill-name {
+        .skill-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2c3e50;
+            font-size: 1.2em;
             font-weight: 600;
-            color: #2d3748;
-            font-size: 1.1em;
+        }
+
+        .skill-title i {
+            font-size: 1.5em;
+            color: #667eea;
         }
 
         .skill-level {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85em;
             font-weight: 600;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
 
         .skill-description {
-            color: #4a5568;
+            color: #555;
             font-size: 0.95em;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .print-btn {
@@ -312,19 +324,19 @@
 
         <nav>
             <ul>
-                <li><a href="#home">
+                <li><a href="index.html">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a></li>
-                <li><a href="#info">
+                <li><a href="personal.html">
                     <i class="fas fa-info-circle"></i>
                     <span>Personal Information</span>
                 </a></li>
-                <li><a href="#education">
+                <li><a href="education.html">
                     <i class="fas fa-graduation-cap"></i>
                     <span>Education</span>
                 </a></li>
-                <li><a href="#skills">
+                <li><a href="skills.html">
                     <i class="fas fa-tools"></i>
                     <span>Skills</span>
                 </a></li>
@@ -336,11 +348,11 @@
                     <i class="fas fa-heart"></i>
                     <span>Hobbies</span>
                 </a></li>
-                <li><a href="#interests">
+                <li><a href="interests.html">
                     <i class="fas fa-star"></i>
                     <span>Interests</span>
                 </a></li>
-                <li><a href="#referees">
+                <li><a href="references.html">
                     <i class="fas fa-users"></i>
                     <span>Referees</span>
                 </a></li>
@@ -351,85 +363,108 @@
             <section id="skills">
                 <h2>Technical & Soft Skills</h2>
                 
+                <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
                 <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-                        
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">React & Next.js</span>
-                                <span class="skill-level">Advanced</span>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fab fa-react"></i>
+                                <span>React & Next.js</span>
                             </div>
-                            <p class="skill-description">Building dynamic frontends and server-side rendered apps with modern React ecosystem.</p>
+                            <span class="skill-level">Advanced</span>
                         </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Django & Python</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <p class="skill-description">Creating scalable web applications with secure backend systems and RESTful APIs.</p>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">HTML, CSS, JavaScript</span>
-                                <span class="skill-level">Expert</span>
-                            </div>
-                            <p class="skill-description">Developing responsive and accessible websites with modern web standards.</p>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Git & GitHub</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <p class="skill-description">Version control and collaboration using Git workflows and GitHub best practices.</p>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Cybersecurity Basics</span>
-                                <span class="skill-level">Intermediate</span>
-                            </div>
-                            <p class="skill-description">Awareness of secure coding practices and system protection methodologies.</p>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Firebase & Vercel</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <p class="skill-description">Deploying full-stack applications and managing backend-as-a-service databases.</p>
-                        </div>
+                        <p class="skill-description">Building dynamic frontends and server-side rendered apps with the modern React ecosystem.</p>
                     </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-palette"></i> Design & Soft Skills</h3>
-                        
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">UI/UX Design Principles</span>
-                                <span class="skill-level">Intermediate</span>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fab fa-python"></i>
+                                <span>Django & Python</span>
                             </div>
-                            <p class="skill-description">Designing intuitive interfaces and user flows with focus on user experience.</p>
+                            <span class="skill-level">Advanced</span>
                         </div>
+                        <p class="skill-description">Creating scalable web applications with secure backend systems and RESTful APIs.</p>
+                    </div>
 
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Communication</span>
-                                <span class="skill-level">Expert</span>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML, CSS, JavaScript</span>
                             </div>
-                            <p class="skill-description">Clear articulation of technical concepts and effective team coordination.</p>
+                            <span class="skill-level">Expert</span>
                         </div>
+                        <p class="skill-description">Developing responsive and accessible websites with modern web standards.</p>
+                    </div>
 
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Problem Solving</span>
-                                <span class="skill-level">Advanced</span>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fab fa-github"></i>
+                                <span>Git & GitHub</span>
                             </div>
-                            <p class="skill-description">Analytical thinking and systematic debugging across frontend and backend systems.</p>
+                            <span class="skill-level">Advanced</span>
                         </div>
+                        <p class="skill-description">Version control and collaboration using Git workflows and GitHub best practices.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Cybersecurity Basics</span>
+                            </div>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <p class="skill-description">Awareness of secure coding practices and system protection methodologies.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fas fa-fire"></i>
+                                <span>Firebase & Vercel</span>
+                            </div>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Deploying full-stack applications and managing backend-as-a-service databases.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 50px;"><i class="fas fa-palette"></i> Design & Soft Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fas fa-pencil-ruler"></i>
+                                <span>UI/UX Design Principles</span>
+                            </div>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <p class="skill-description">Designing intuitive interfaces and user flows with focus on user experience.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fas fa-comments"></i>
+                                <span>Communication</span>
+                            </div>
+                            <span class="skill-level">Expert</span>
+                        </div>
+                        <p class="skill-description">Clear articulation of technical concepts and effective team coordination.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Problem Solving</span>
+                            </div>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <p class="skill-description">Analytical thinking and systematic debugging across frontend and backend systems.</p>
                     </div>
                 </div>
 
